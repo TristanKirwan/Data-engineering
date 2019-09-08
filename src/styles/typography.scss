@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,600,700|Raleway:300,400,600,700&display=swap');
+@import './colors.scss';
+
+$font-Oswald: 'Oswald';
+$font-Raleway: 'Raleway';
+
+h1, .h1{
+    font-family: $font-Oswald;
+    font-size: rem-calc(25);
+}
+h3, .h3{
+    font-family: $font-Oswald;
+    font-size: rem-calc(18);
+    color: $color-gray;
+}
+p{
+    font-family: $font-Raleway;
+}

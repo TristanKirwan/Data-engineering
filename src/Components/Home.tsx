@@ -1,11 +1,14 @@
 import React from 'react'
-import BigCard from './Bigcard'
+import BigCard from './BigCard'
 
 export default function Home() {
     return (
             <div className="wrapper">
                 <p>Start building your favourite decks today!</p>
-                <BigCard/>
+                <div className="articles">
+                    <BigCard/>
+                    <BigCard type="secondary"/>
+                </div>
             </div>
     )
 }

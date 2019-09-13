@@ -41,34 +41,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
-
-/* Start of own css */
-$colors:(
-    brown: rgba(110, 91, 1, 1),
-    blue: rgb(0, 104, 164),
-    papyrus: rgb(181, 165, 18)
-);
-@function color($color-name){
-    @return map-get($colors, $color-name)
-};
-
-.wrapper{
-    width: 90%;
-    margin: 0 auto;
-}
-
-.hrflex{
-    display: flex;
-}
-.navbar{
-    background-color: color(brown);
-    li{
-        margin: 0 1em;
-        cursor: pointer;
-    }
-    li:nth-last-child(2){
-        margin-left: auto;
-    }
-}

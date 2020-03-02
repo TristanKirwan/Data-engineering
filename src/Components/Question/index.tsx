@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState} from 'react'
 import dlv from 'dlv';
 
 import './style.scss'
-import { CLIENT_RENEG_WINDOW } from 'tls';
 
 type QuestionAnswer = {
     text: string,
@@ -14,29 +12,48 @@ type LifeLineInformation = {
     phoneAFriend: string,
     askTheAudience: number[]
 }
-type QuestionData =  {
+type question = {
     question: string,
     answers: QuestionAnswer [],
     lifelines: LifeLineInformation
 }
+type questionData =  {
+    questions: question []
+}
 
 interface IProps {
-    questiondata: QuestionData
+    questionData: questionData,
+    setFinalScreen: Function
 }
 
 function Question(props: IProps){
+    const questions = dlv(props.questionData, 'questions', '');
+
     const [fiftyFifty, setFiftyFifty] = useState(false)
     const [phoneAFriend, setPhoneAFriend] = useState(false)
     const [askTheAudience, setAskTheAudience] = useState(false)
+    const [currentQuestion, setCurrentQuestion] = useState(questions[0])
+
     let multipleChoiceLetters = ["A", "B", "C", "D"]
+    //get random question here
 
-
+    function nextQuestion () {
+        const currentIndex = questions.indexOf(currentQuestion);
+        questions.splice(currentIndex, 1);
+        
+        if(questions.length){
+            setCurrentQuestion(questions[Math.floor(Math.random() * (questions.length - 1))]);
+        }
+        else {
+            props.setFinalScreen(true);
+        }
+    }
 
     return(
         <div className="question">
             <div className="position-relative d-flex justify-content-center align-items-center">
                 <span className="question__horizontal-line"></span>
-                <div className="question__header">{props.questiondata.question}</div>
+                <div className="question__header">{currentQuestion.question}</div>
             </div>
             <div className="question__lifelines-container">
                 <span className="question__lifelines-container__lifeline" onClick={() => setFiftyFifty(true)}>50/50</span>
@@ -45,8 +62,8 @@ function Question(props: IProps){
                 <span className="question__lifelines-container__lifeline">Skip question</span>
             </div>
             <div className="question__answers">
-                {props.questiondata.answers.map((answer: QuestionAnswer, id: number) => {
-                    let shouldHideOnFiftyFity = fiftyFifty && props.questiondata.lifelines.fiftyFifty.includes(id)
+                {currentQuestion.answers.map((answer: QuestionAnswer, id: number) => {
+                    let shouldHideOnFiftyFity = fiftyFifty && currentQuestion.lifelines.fiftyFifty.includes(id)
                     return(
                         <div key={id} className="question__answers__answer-container">
                             {id % 2 == 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
@@ -69,6 +86,7 @@ function Question(props: IProps){
         const element: HTMLElement = document.getElementById(`${id}`)!;
         
         element.classList.add(`${answer}`);
+        nextQuestion();
     }
 }
 

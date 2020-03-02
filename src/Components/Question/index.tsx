@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import dlv from 'dlv';
 
 import './style.scss'
+import { CLIENT_RENEG_WINDOW } from 'tls';
 
 type QuestionAnswer = {
     text: string,
@@ -26,6 +29,9 @@ function Question(props: IProps){
     const [phoneAFriend, setPhoneAFriend] = useState(false)
     const [askTheAudience, setAskTheAudience] = useState(false)
     let multipleChoiceLetters = ["A", "B", "C", "D"]
+
+
+
     return(
         <div className="question">
             <div className="position-relative d-flex justify-content-center align-items-center">
@@ -42,11 +48,15 @@ function Question(props: IProps){
                 {props.questiondata.answers.map((answer: QuestionAnswer, id: number) => {
                     let shouldHideOnFiftyFity = fiftyFifty && props.questiondata.lifelines.fiftyFifty.includes(id)
                     return(
-                        <div className="question__answers__answer-container">
+                        <div key={id} className="question__answers__answer-container">
                             {id % 2 == 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
-                            <div key={id} className="question__answers__answer-container__answer" onClick={() => alert(`Your answer was: ${answer.correct}`)}>
-                    <span className="question__answers__answer-container__answer__prefix">{multipleChoiceLetters[id]}: </span>{answer.text}
-                            {shouldHideOnFiftyFity && <span>Deleted by 50/50</span>}
+                            <div id={`${id}`} className="question__answers__answer-container__answer" onClick={() => correctAnswers(answer.correct, id)}>
+                                <span className="question__answers__answer-container__answer__prefix">{multipleChoiceLetters[id]}: </span>{answer.text}
+                                {shouldHideOnFiftyFity && 
+                                <span>
+                                    Deleted by 50/50
+                                </span>
+                                }
                             </div>
                         </div>
                     )
@@ -54,6 +64,12 @@ function Question(props: IProps){
             </div>
         </div>
     )
+
+    function correctAnswers(answer: boolean, id: number) {
+        const element: HTMLElement = document.getElementById(`${id}`)!;
+        
+        element.classList.add(`${answer}`);
+    }
 }
 
 export default Question

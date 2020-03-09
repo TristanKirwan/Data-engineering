@@ -1,7 +1,5 @@
+@import '../../styles/colors.scss';
 $baseName: "question";
-$colour-gold: #ADACB8;
-$colour-blue: #013392;
-$color-blue-light: #345ca8;
 
 .#{$baseName}{
     &__horizontal-line{
@@ -24,16 +22,56 @@ $color-blue-light: #345ca8;
         padding: 5px 15px;
     }
     &__lifelines-container{
+        display: flex;
+        flex-wrap: wrap;
+        width: 10%;
         position: absolute;
         bottom: 100%;
-        right: 0;
+        right: 15px;
         &__lifeline{
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-basis: calc(50% - 5px);
+            margin-left:  5px;
             color: white;
             background-color: $colour-blue;
             border-radius: 24px;
             padding: 5px 15px;
             margin-bottom: 5px;
+            transition: all 0.2s ease-in;
+            &:hover{
+                background-color: $color-blue-light;
+                cursor: pointer;
+            }
+            &--disabled{
+                &:hover{
+                    background-color: $colour-blue;
+                    cursor: not-allowed;
+                }
+                .#{$baseName}__lifelines-container__lifeline__icon-container{
+                    &:after{
+                        opacity: 1;
+                    }
+                }
+            }
+            &__icon-container{
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 20px;
+                position: relative;
+                &:after{
+                    content: '';
+                    opacity: 0;
+                    display: inline-block;
+                    width: 100%;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    border-top: 3px solid $color-red;
+                }
+            }
         }
     }
     &__answers{
@@ -46,16 +84,6 @@ $color-blue-light: #345ca8;
         &__answer-container{
             position: relative;
             width: 50%;
-            // &__horizontal-line{
-            //     position: absolute;
-            //     display: inline-block;
-            //     height: 0px;
-            //     width: 100vw;
-            //     top: 50%;
-            //     transform: translateY(-50%);
-            //     border-top: 2px solid $colour-gold;
-            //     z-index: -1;
-            // }
             &__answer{
                 background-color: $colour-blue;
                 border-radius: 24px;
@@ -63,12 +91,20 @@ $color-blue-light: #345ca8;
                 color: white;
                 padding: 5px 15px;
                 transition: all 0.3s ease-in;
-                &__prefix{
-                    color: $colour-gold;
-                }
                 &:hover{
                     cursor: pointer;
                     background-color: $color-blue-light;
+                }
+                &__prefix{
+                    color: $colour-gold;
+                }
+                &--disabled{
+                    background-color: $color-grey;
+                    text-decoration: line-through;
+                    &:hover{
+                        cursor: not-allowed;
+                        background-color: $color-grey;
+                    }
                 }
             }
         }

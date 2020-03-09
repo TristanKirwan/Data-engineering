@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import classnames from 'classnames'
+
 
 import './style.scss'
 
@@ -33,20 +35,29 @@ function Question(props: IProps){
                 <div className="question__header">{props.questiondata.question}</div>
             </div>
             <div className="question__lifelines-container">
-                <span className="question__lifelines-container__lifeline" onClick={() => setFiftyFifty(true)}>50/50</span>
-                <span className="question__lifelines-container__lifeline">Phone a friend</span>
-                <span className="question__lifelines-container__lifeline">Ask the audience</span>
-                <span className="question__lifelines-container__lifeline">Skip question</span>
+                <span className={classnames("question__lifelines-container__lifeline", fiftyFifty && "question__lifelines-container__lifeline--disabled")} onClick={() => setFiftyFifty(true)}>
+                    <span className="question__lifelines-container__lifeline__icon-container">50/50</span>
+                </span>
+                <span className="question__lifelines-container__lifeline">
+                    <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-phone"></i></span>
+                </span>
+                <span className="question__lifelines-container__lifeline">
+                    <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-users"></i></span>
+                </span>
+                <span className="question__lifelines-container__lifeline">
+                    <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-arrow-right"></i></span>
+                </span>
             </div>
             <div className="question__answers">
                 {props.questiondata.answers.map((answer: QuestionAnswer, id: number) => {
-                    let shouldHideOnFiftyFity = fiftyFifty && props.questiondata.lifelines.fiftyFifty.includes(id)
+                    let shouldHideOnFiftyFifty = fiftyFifty && props.questiondata.lifelines.fiftyFifty.includes(id)
                     return(
                         <div className="question__answers__answer-container">
-                            {id % 2 == 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
-                            <div key={id} className="question__answers__answer-container__answer" onClick={() => alert(`Your answer was: ${answer.correct}`)}>
+                            {id % 2 === 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
+                            <div key={id} className={classnames("question__answers__answer-container__answer",
+                            shouldHideOnFiftyFifty && "question__answers__answer-container__answer--disabled")}
+                            onClick={() => shouldHideOnFiftyFifty ? null : alert(`Your answer was: ${answer.correct}`)}>
                     <span className="question__answers__answer-container__answer__prefix">{multipleChoiceLetters[id]}: </span>{answer.text}
-                            {shouldHideOnFiftyFity && <span>Deleted by 50/50</span>}
                             </div>
                         </div>
                     )

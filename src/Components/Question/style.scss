@@ -80,10 +80,11 @@ $baseName: "question";
         align-items: center;
         flex-wrap: wrap;
         width: 80%;
-        margin: 0 auto;
+        margin: 5px auto;
         &__answer-container{
             position: relative;
             width: 50%;
+            margin: 2px auto;
             &__answer{
                 background-color: $colour-blue;
                 border-radius: 24px;
@@ -105,6 +106,13 @@ $baseName: "question";
                         cursor: not-allowed;
                         background-color: $color-grey;
                     }
+                }
+                &.false {
+                    background-color: red;
+                }
+
+                &.true {
+                    background-color: green;
                 }
             }
         }

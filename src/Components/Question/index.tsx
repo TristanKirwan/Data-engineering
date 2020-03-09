@@ -1,5 +1,8 @@
 import React, { useState} from 'react'
+
+import classnames from 'classnames';
 import dlv from 'dlv';
+import anime from 'animejs';
 
 import './style.scss'
 
@@ -33,6 +36,8 @@ function Question(props: IProps){
     const [phoneAFriend, setPhoneAFriend] = useState(false)
     const [askTheAudience, setAskTheAudience] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(questions[0])
+    const [hasAnswered, setHasAnswered] = useState(false);
+    const [isPending, setIsPending] = useState(false);
 
     let multipleChoiceLetters = ["A", "B", "C", "D"]
     //get random question here
@@ -40,6 +45,7 @@ function Question(props: IProps){
     function nextQuestion () {
         const currentIndex = questions.indexOf(currentQuestion);
         questions.splice(currentIndex, 1);
+        setHasAnswered(false);
         
         if(questions.length){
             setCurrentQuestion(questions[Math.floor(Math.random() * (questions.length - 1))]);
@@ -48,6 +54,17 @@ function Question(props: IProps){
             props.setFinalScreen(true);
         }
     }
+
+
+    anime({
+        targets: '.flashing',
+        keyframes: [
+          {backgroundColor: '#013392'},
+          {backgroundColor: '#5e80c1'}
+        ],
+        duration: 2000,
+        loop: true
+      });
 
     return(
         <div className="question">
@@ -67,7 +84,7 @@ function Question(props: IProps){
                     return(
                         <div key={id} className="question__answers__answer-container">
                             {id % 2 == 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
-                            <div id={`${id}`} className="question__answers__answer-container__answer" onClick={() => correctAnswers(answer.correct, id)}>
+                            <div id={`${id}`} className={classnames("question__answers__answer-container__answer", hasAnswered && `${answer.correct}`, isPending && "flashing")} onClick={() => correctAnswers(answer.correct, id)}>
                                 <span className="question__answers__answer-container__answer__prefix">{multipleChoiceLetters[id]}: </span>{answer.text}
                                 {shouldHideOnFiftyFity && 
                                 <span>
@@ -83,10 +100,17 @@ function Question(props: IProps){
     )
 
     function correctAnswers(answer: boolean, id: number) {
-        const element: HTMLElement = document.getElementById(`${id}`)!;
+        //get html element and add a class     
+        setIsPending(true);
+
+        setTimeout(() => {
+            setIsPending(false);
+            setHasAnswered(true);
+        }, 2000)
         
-        element.classList.add(`${answer}`);
-        nextQuestion();
+        setTimeout(() => {
+            nextQuestion();
+        }, 3000);
     }
 }
 

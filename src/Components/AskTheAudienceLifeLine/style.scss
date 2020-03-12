@@ -1,0 +1,45 @@
+@import '../../styles/colors.scss';
+$baseName: "ask-the-audience-container";
+
+
+.#{$baseName}{
+    display: flex;
+    background-color: rgba(255,255,255,0.8);
+    position: fixed;
+    width: 50vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: top;
+    padding: 10px 0px;
+    &__title{
+        margin: 0 auto;
+        color: $color-black;
+    }
+    &__bars-container{
+        height: 90%;
+        &__answer{
+            display: flex;
+            flex-direction: column-reverse;
+            width: 25%;
+            padding: 0 12px;
+            &__percentage-bar{
+                background-color: #6c5efd;
+            }
+            &__percentage{
+                color: $color-black;
+                opacity: 0;
+                text-align: center;
+                &:after{
+                    content: '%';
+                }
+            }
+        }
+    }
+    &__label{
+        font-size: 1rem;
+        text-align: center;
+        color: $color-black;
+    }
+}

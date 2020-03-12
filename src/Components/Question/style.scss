@@ -7,7 +7,7 @@ $baseName: "question";
         display: inline-block;
         height: 0px;
         width: 100%;
-        border-top: 2px solid $colour-gold;
+        border-top: 2px solid $color-whitegray;
         z-index: -1;
     }
     &__header{
@@ -15,10 +15,10 @@ $baseName: "question";
         text-align: center;
         color: white;
         z-index: 1;
-        background-color: $colour-blue;
+        background-color: $color-blue;
         //We could change border radius to look more like the original
         border-radius: 24px;
-        border: 2px solid $colour-gold;
+        border: 2px solid $color-whitegray;
         padding: 5px 15px;
     }
     &__lifelines-container{
@@ -35,7 +35,7 @@ $baseName: "question";
             flex-basis: calc(50% - 5px);
             margin-left:  5px;
             color: white;
-            background-color: $colour-blue;
+            background-color: $color-blue;
             border-radius: 24px;
             padding: 5px 15px;
             margin-bottom: 5px;
@@ -46,7 +46,7 @@ $baseName: "question";
             }
             &--disabled{
                 &:hover{
-                    background-color: $colour-blue;
+                    background-color: $color-blue;
                     cursor: not-allowed;
                 }
                 .#{$baseName}__lifelines-container__lifeline__icon-container{
@@ -86,9 +86,9 @@ $baseName: "question";
             width: 50%;
             margin: 2px auto;
             &__answer{
-                background-color: $colour-blue;
+                background-color: $color-blue;
                 border-radius: 24px;
-                border: 2px solid $colour-gold;
+                border: 2px solid $color-whitegray;
                 color: white;
                 padding: 5px 15px;
                 transition: all 0.3s ease-in;
@@ -97,11 +97,12 @@ $baseName: "question";
                     background-color: $color-blue-light;
                 }
                 &__prefix{
-                    color: $colour-gold;
+                    color: $color-whitegray;
                 }
                 &--disabled{
                     background-color: $color-grey;
                     text-decoration: line-through;
+                    pointer-events: none;
                     &:hover{
                         cursor: not-allowed;
                         background-color: $color-grey;

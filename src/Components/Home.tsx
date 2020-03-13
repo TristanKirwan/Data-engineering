@@ -12,7 +12,7 @@ export default function Home() {
     return (
             <div className="home">
                 <div className="home__background">
-                    <img className="home__background__image" src="https://www.thesun.co.uk/wp-content/uploads/2018/05/NINTCHDBPICT0004037735051.jpg"/>
+                    <img className="home__background__image"/>
                 </div>
                 <div className="home__question">
                     {finalScreen ? <FinalScreen score={score}/> : <Question questionData={questionData} setFinalScreen={setFinalScreen} setScore={setScore} score={score} />}

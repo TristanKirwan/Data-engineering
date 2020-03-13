@@ -10,7 +10,7 @@ $baseName: "ask-the-audience-container";
     height: 50vh;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     transform-origin: top;
     padding: 10px 0px;
     &__title{

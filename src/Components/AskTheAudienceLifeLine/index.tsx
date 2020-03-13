@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 
 import classnames from 'classnames';
 import anime from 'animejs';
@@ -7,7 +7,7 @@ import './style.scss'
 
 
 interface IProps {
-    lifeLineNumbers: number[]
+    lifeLineNumbers: number[],
 }
 
 function AskTheAudienceLifeLineVisual(props: IProps){

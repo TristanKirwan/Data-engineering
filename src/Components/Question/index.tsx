@@ -63,7 +63,8 @@ function Question(props: IProps & LifeLineProps){
     const [isPending, setIsPending] = useState(false);
 
     //Lifeline control
-    const [usedAskTheAudienceThisRound, setUsedAskTheAudienceThisRound] = useState(false)
+    // const [usedAskTheAudienceThisRound, setShowAskTheAudience] = useState(false)
+    const [showAskTheAudience, setShowAskTheAudience] = useState(false)
     const [usedPhoneAFriendThisRound, setUsedPhoneAFriendThisRound] = useState(false)
     const [usedAnyLifeLineThisRound, setUsedAnyLifeLineThisRound] = useState(false)
     let multipleChoiceLetters = ["A", "B", "C", "D"]
@@ -86,7 +87,8 @@ function Question(props: IProps & LifeLineProps){
         const currentIndex = questions.indexOf(currentQuestion);
         questions.splice(currentIndex, 1);
         setHasAnswered(false);
-        
+        setUsedAnyLifeLineThisRound(false)
+
         if(questions.length){
             setCurrentQuestion(questions[Math.floor(Math.random() * (questions.length - 1))]);
         }
@@ -96,7 +98,7 @@ function Question(props: IProps & LifeLineProps){
     }
 
     const activateAskTheAudience = function(){
-        setUsedAskTheAudienceThisRound(true)
+        setShowAskTheAudience(true)
         props.useAskTheAudience()
         setUsedAnyLifeLineThisRound(true)
         updateState({})
@@ -116,7 +118,7 @@ function Question(props: IProps & LifeLineProps){
     const activateSkipQuestion = function(){
         props.useSkipQuestion()
         setUsedAnyLifeLineThisRound(true)
-        //We still have to skip a question, and check for a new question in a useEffect to reset usedALifeLineThisRound.
+        correctAnswers(true, 0)
         updateState({})
     }
 
@@ -139,7 +141,7 @@ function Question(props: IProps & LifeLineProps){
       return(
           <div className="question">
             {/* The ask The audience lifeline is handled in a seperate component, if we used it this round we should show it, otherwise we dont. */}
-            {usedAskTheAudienceThisRound && <AskTheAudienceVisual lifeLineNumbers={currentQuestion.lifelines.askTheAudience }/>}
+            {showAskTheAudience && <AskTheAudienceVisual lifeLineNumbers={currentQuestion.lifelines.askTheAudience }/>}
             {usedPhoneAFriendThisRound && <PhoneAFriendVisual text={currentQuestion.lifelines.phoneAFriend} />}
             <div className="position-relative d-flex justify-content-center align-items-center">
                 <span className="question__horizontal-line"></span>
@@ -187,7 +189,8 @@ function Question(props: IProps & LifeLineProps){
 
     function correctAnswers(answer: boolean, id: number) {
         setHasAnswered(true);
-
+        setShowAskTheAudience(false)
+        setUsedPhoneAFriendThisRound(false)
         if(answer) {
             props.setScore(score + 1)
         }

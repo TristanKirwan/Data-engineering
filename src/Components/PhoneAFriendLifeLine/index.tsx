@@ -1,5 +1,4 @@
-import React, { useState, useEffect} from 'react'
-import classnames from 'classnames';
+import React, {useEffect} from 'react'
 import anime from 'animejs';
 
 import './style.scss'

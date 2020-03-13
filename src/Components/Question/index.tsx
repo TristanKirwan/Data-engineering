@@ -1,5 +1,7 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 
+import { connect } from 'react-redux'
+import { usePhoneAFriend, useAskTheAudience, useFiftyFifty, useSkipQuestion } from '../../actions/lifelineActions'
 import classnames from 'classnames';
 import dlv from 'dlv';
 import anime from 'animejs';
@@ -27,18 +29,31 @@ type questionData =  {
     questions: question []
 }
 
+interface LifeLineProps {
+    usedAskTheAudience: boolean,
+    usedPhoneAFriend: boolean,
+    usedFiftyFifty: boolean,
+    usedSkipQuestion: boolean
+}
 interface IProps {
     questionData: questionData,
-    setFinalScreen: Function
+    setFinalScreen: Function,
+    // Redux lifeline functions
+    usePhoneAFriend: Function,
+    useAskTheAudience: Function,
+    useFiftyFifty: Function,
+    useSkipQuestion: Function
 }
 
-function Question(props: IProps){
+
+function Question(props: IProps & LifeLineProps){
     const questions = dlv(props.questionData, 'questions', '');
     const [, updateState] = useState()
     //Lifelines
     const [fiftyFifty, setFiftyFifty] = useState(false)
     const [phoneAFriend, setPhoneAFriend] = useState(false)
     const [askTheAudience, setAskTheAudience] = useState(false)
+    const [skipQuestion, setSkipQuestion] = useState(false)
 
     //Control vars
     const [currentQuestion, setCurrentQuestion] = useState(questions[0])
@@ -48,9 +63,21 @@ function Question(props: IProps){
     //Lifeline control
     const [usedAskTheAudienceThisRound, setUsedAskTheAudienceThisRound] = useState(false)
     const [usedPhoneAFriendThisRound, setUsedPhoneAFriendThisRound] = useState(false)
+    const [usedAnyLifeLineThisRound, setUsedAnyLifeLineThisRound] = useState(false)
     let multipleChoiceLetters = ["A", "B", "C", "D"]
-    //get random question here
+   
+    
+    //Set lifelines equal to the value in the store (so the player can't use the lifelines again)
+    useEffect(() => {
+        setAskTheAudience(props.usedAskTheAudience)
+        setPhoneAFriend(props.usedPhoneAFriend)
+        setFiftyFifty(props.usedFiftyFifty)
+        setSkipQuestion(props.usedSkipQuestion)
+    })
 
+
+
+    //get random question here
     function nextQuestion () {
         const currentIndex = questions.indexOf(currentQuestion);
         questions.splice(currentIndex, 1);
@@ -66,13 +93,26 @@ function Question(props: IProps){
 
     const activateAskTheAudience = function(){
         setUsedAskTheAudienceThisRound(true)
-        setAskTheAudience(true)
+        props.useAskTheAudience()
+        setUsedAnyLifeLineThisRound(true)
         updateState({})
     }
 
     const activatePhoneAFriend = function(){
         setUsedPhoneAFriendThisRound(true)
-        setPhoneAFriend(true)
+        props.usePhoneAFriend()
+        setUsedAnyLifeLineThisRound(true)
+        updateState({})
+    }
+    const activateFiftyFifty = function(){
+        props.useFiftyFifty()
+        setUsedAnyLifeLineThisRound(true)
+        updateState({})
+    }
+    const activateSkipQuestion = function(){
+        props.useSkipQuestion()
+        setUsedAnyLifeLineThisRound(true)
+        //We still have to skip a question, and check for a new question in a useEffect to reset usedALifeLineThisRound.
         updateState({})
     }
 
@@ -86,8 +126,14 @@ function Question(props: IProps){
         loop: true
       });
 
-    return(
-        <div className="question">
+      //We use these vars to disable the onclick / change styling. You are only allowed to use each lifeline once, and only 1 lifeline per round.
+      let isAllowedToUseFifyFifty = !(usedAnyLifeLineThisRound || fiftyFifty)
+      let isAllowedToUseAskTheAudience = !(usedAnyLifeLineThisRound || askTheAudience)
+      let isAllowedToPhoneAFriend = !(usedAnyLifeLineThisRound || phoneAFriend)
+      let isAllowedToSkip = !(usedAnyLifeLineThisRound || skipQuestion)
+
+      return(
+          <div className="question">
             {/* The ask The audience lifeline is handled in a seperate component, if we used it this round we should show it, otherwise we dont. */}
             {usedAskTheAudienceThisRound && <AskTheAudienceVisual lifeLineNumbers={currentQuestion.lifelines.askTheAudience }/>}
             {usedPhoneAFriendThisRound && <PhoneAFriendVisual text={currentQuestion.lifelines.phoneAFriend} />}
@@ -96,16 +142,20 @@ function Question(props: IProps){
                 <div className="question__header">{currentQuestion.question}</div>
             </div>
             <div className="question__lifelines-container">
-                <span className={classnames("question__lifelines-container__lifeline", fiftyFifty && "question__lifelines-container__lifeline--disabled")} onClick={() => setFiftyFifty(true)}>
+                <span className={classnames("question__lifelines-container__lifeline", usedAnyLifeLineThisRound && "question__lifelines-container__lifeline--disabled", fiftyFifty && "question__lifelines-container__lifeline--used")}
+                 onClick={() => isAllowedToUseFifyFifty ? activateFiftyFifty() : null}>
                     <span className="question__lifelines-container__lifeline__icon-container">50/50</span>
                 </span>
-                <span className={classnames("question__lifelines-container__lifeline", phoneAFriend && "question__lifelines-container__lifeline--disabled")} onClick={() => activatePhoneAFriend()}>
+                <span className={classnames("question__lifelines-container__lifeline", usedAnyLifeLineThisRound && "question__lifelines-container__lifeline--disabled", phoneAFriend && "question__lifelines-container__lifeline--used")}
+                 onClick={() => isAllowedToPhoneAFriend ? activatePhoneAFriend() : null}>
                     <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-phone"></i></span>
                 </span>
-                <span className={classnames("question__lifelines-container__lifeline", askTheAudience && "question__lifelines-container__lifeline--disabled")} onClick={() => activateAskTheAudience()}>
+                <span className={classnames("question__lifelines-container__lifeline", usedAnyLifeLineThisRound && "question__lifelines-container__lifeline--disabled", askTheAudience && "question__lifelines-container__lifeline--used")}
+                 onClick={() => isAllowedToUseAskTheAudience ? activateAskTheAudience() : null}>
                     <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-users"></i></span>
                 </span>
-                <span className={classnames("question__lifelines-container__lifeline")}>
+                <span className={classnames("question__lifelines-container__lifeline", usedAnyLifeLineThisRound && "question__lifelines-container__lifeline--disabled", skipQuestion && "question__lifelines-container__lifeline--used")}
+                    onClick={() => isAllowedToSkip ? activateSkipQuestion() : null}>
                     <span className="question__lifelines-container__lifeline__icon-container"><i className="fas fa-arrow-right"></i></span>
                 </span>
             </div>
@@ -146,4 +196,13 @@ function Question(props: IProps){
     }
 }
 
-export default Question
+function mapStateToProps(state: any){
+    return {
+        usedAskTheAudience: state.lifelines.usedAskTheAudience,
+        usedPhoneAFriend: state.lifelines.usedPhoneAFriend,
+        usedFiftyFifty: state.lifelines.usedFiftyFifty,
+        usedSkipQuestion: state.lifelines.usedSkipQuestion
+    }
+}
+
+export default connect(mapStateToProps, { usePhoneAFriend, useAskTheAudience, useFiftyFifty, useSkipQuestion })(Question)

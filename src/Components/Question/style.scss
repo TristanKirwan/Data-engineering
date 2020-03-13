@@ -44,7 +44,7 @@ $baseName: "question";
                 background-color: $color-blue-light;
                 cursor: pointer;
             }
-            &--disabled{
+            &--used{
                 &:hover{
                     background-color: $color-blue;
                     cursor: not-allowed;
@@ -53,6 +53,12 @@ $baseName: "question";
                     &:after{
                         opacity: 1;
                     }
+                }
+            }
+            &--disabled, .#{$baseName}__lifelines-container__lifeline--disabled.#{$baseName}__lifelines-container__lifeline--used{
+                background-color: $color-grey;
+                &:hover{
+                    background-color: $color-grey;
                 }
             }
             &__icon-container{

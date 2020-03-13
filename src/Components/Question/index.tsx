@@ -38,6 +38,8 @@ interface LifeLineProps {
 interface IProps {
     questionData: questionData,
     setFinalScreen: Function,
+    setScore: Function,
+    score: number,
     // Redux lifeline functions
     usePhoneAFriend: Function,
     useAskTheAudience: Function,
@@ -65,6 +67,8 @@ function Question(props: IProps & LifeLineProps){
     const [usedPhoneAFriendThisRound, setUsedPhoneAFriendThisRound] = useState(false)
     const [usedAnyLifeLineThisRound, setUsedAnyLifeLineThisRound] = useState(false)
     let multipleChoiceLetters = ["A", "B", "C", "D"]
+
+    const score = dlv(props, 'score', 0);
    
     
     //Set lifelines equal to the value in the store (so the player can't use the lifelines again)
@@ -182,14 +186,12 @@ function Question(props: IProps & LifeLineProps){
     )
 
     function correctAnswers(answer: boolean, id: number) {
-        //get html element and add a class     
-        setIsPending(true);
+        setHasAnswered(true);
 
-        setTimeout(() => {
-            setIsPending(false);
-            setHasAnswered(true);
-        }, 2000)
-        
+        if(answer) {
+            props.setScore(score + 1)
+        }
+
         setTimeout(() => {
             nextQuestion();
         }, 3000);

@@ -1,0 +1,53 @@
+{   
+    "scores": [
+    {
+        "title": "Noobie",
+        "id": 0
+    },
+    {
+        "title": "Novice",
+        "id": 1
+    },
+    {
+        "title": "Failing student",
+        "id": 2
+    },
+    {
+        "title": "Intermediate Student",
+        "id": 3
+    },
+    {
+        "title": "Experienced Student",
+        "id": 4
+    },
+    {
+        "title": "Junior Data Engineer",
+        "id": 5
+    },
+    {
+        "title": "Senior Data Engineer",
+        "id": 6
+    },
+    {
+        "title": "Novice Data Mentor ",
+        "id": 7
+    },
+    {
+        "title": "Experienced Data Mentor ",
+        "id": 8
+    },
+    {
+        "title": "Modeling Master",
+        "id": 9
+    },
+    {
+        "title": "Data Legend",
+        "id": 10
+    },
+    {
+        "title": "BIM & GIS GOD",
+        "id": 11
+    }
+    ]
+}
+  

@@ -59,6 +59,7 @@ $baseName: "question";
                 background-color: $color-grey;
                 &:hover{
                     background-color: $color-grey;
+                    cursor: not-allowed
                 }
             }
             &__icon-container{

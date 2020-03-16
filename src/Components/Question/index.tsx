@@ -8,8 +8,8 @@ import anime from 'animejs';
 
 import './style.scss'
 
-import AskTheAudienceVisual from '../AskTheAudienceLifeLine'
-import PhoneAFriendVisual from '../PhoneAFriendLifeLine'
+import AskTheAudienceVisual from '../AskTheAudienceLifeLine';
+import PhoneAFriendVisual from '../PhoneAFriendLifeLine';
 
 type QuestionAnswer = {
     text: string,

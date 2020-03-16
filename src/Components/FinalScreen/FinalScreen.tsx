@@ -22,7 +22,7 @@ function FinalScreen(props: IProps){
     anime({
         targets: '.millionaire',
         rotate: 3600,
-        left: [-250, 1000],
+        left: [-250, 1500],
         easing: 'easeInOutQuad',
         duration: 3000
     })
@@ -54,7 +54,7 @@ function FinalScreen(props: IProps){
     
         timeline.add({
             targets: '.scoreboardWrapper',
-            height: '75%',
+            height: '60%',
             duration: 1100
         }, 2000)
     
@@ -84,7 +84,7 @@ function FinalScreen(props: IProps){
     }, [])
 
     return(
-        <div className="container">
+        <div className="finalScreenContainer">
             <div className="millionaire" />
             <div className={classnames("scoreboardWrapper", fireworks && "pyro")}>
                 <div className="before" />

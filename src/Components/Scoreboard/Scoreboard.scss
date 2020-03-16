@@ -1,0 +1,33 @@
+.scoreboard {
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin: 0px 50px;
+
+    & .scoreboardContainer {
+        background-color: #013392;
+        border: 2px solid #ADACB8;
+        border-radius: 15px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .scoreboardItems {
+            display: flex;
+            height: 90%;
+            flex-direction: column;
+
+            & .text {
+                color: #fff;
+                opacity: 0.5;
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

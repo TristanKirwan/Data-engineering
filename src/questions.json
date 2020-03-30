@@ -1,51 +1,292 @@
 {
   "questions": [
     {
-    "question": "Question 1",
+    "question": "What does the abbreviation GIS mean?",
     "answers": [{
-      "text": "This is an incorrect answer",
+      "text": "Graphical Information System",
       "correct": false
     },
     {
-      "text": "This is an incorrect answer",
+      "text": "Geographic Information Source",
       "correct": false
     },
     {
-      "text": "This is the correct answer",
+      "text": "Geographic Information System",
       "correct": true
     },
     {
-      "text": "this is an incorrect answer",
+      "text": "Graphic Information Source",
       "correct": false
     }],
     "lifelines": {
-      "fiftyFifty": [0, 1],
-      "phoneAFriend": "This text is displayed when you use the phone a friend lifeline",
+      "fiftyFifty": [0, 2],
+      "phoneAFriend": "I think the correct answer is C",
       "askTheAudience": [22, 8, 62, 8]
     }
   },
   {
-    "question": "Question 2",
+    "question": "Which of the following functions can be done with GIS as well as with a classic map?",
     "answers": [{
-      "text": "This is an incorrect answer",
+      "text": "Predicting variables",
       "correct": false
     },
     {
-      "text": "This is an incorrect answer",
-      "correct": false
-    },
-    {
-      "text": "This is the correct answer",
+      "text": "Calculate the distance between locations",
       "correct": true
     },
     {
-      "text": "this is an incorrect answer",
+      "text": "Digitally compare multiple maps",
+      "correct": false
+    },
+    {
+      "text": "Create static and geographic analyses",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [1, 3],
+      "phoneAFriend": "Ohw... I realy don't know. If i would guess the answer is B",
+      "askTheAudience": [22, 48, 12, 18]
+    }
+  },
+  {
+    "question": "Which sort of information is needed to work with GIS?",
+    "answers": [{
+      "text": "The time when an event takes place",
+      "correct": false
+    },
+    {
+      "text": "The location where an event takes place",
+      "correct": true
+    },
+    {
+      "text": "The year when an event takes place",
+      "correct": false
+    },
+    {
+      "text": "Non of the above",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [1, 4],
+      "phoneAFriend": "Answer B",
+      "askTheAudience": [24, 46, 12, 18]
+    }
+  },
+  {
+    "question": "When can GIS be used?",
+    "answers": [{
+      "text": "To find out where new branches of banks and stores are best located.",
+      "correct": false
+    },
+    {
+      "text": "To plan a route between 2 locations",
+      "correct": false
+    },
+    {
+      "text": "To make connections between the type of soil and vegetation on a certain location",
+      "correct": false
+    },
+    {
+      "text": "All of the above",
+      "correct": true
+    }],
+    "lifelines": {
+      "fiftyFifty": [1, 3],
+      "phoneAFriend": "..., your friend did not pick up the phone.",
+      "askTheAudience": [24, 7, 12, 67]
+    }
+  },
+  {
+    "question": "What can you not use GIS for?",
+    "answers": [{
+      "text": "To predict the weather",
+      "correct": true
+    },
+    {
+      "text": "To visualize where it will be raining",
+      "correct": false
+    },
+    {
+      "text": "To check if there is a connection between the weather in a certain location and the amount of traffic accidents in that location",
+      "correct": false
+    },
+    {
+      "text": "All of the above",
       "correct": false
     }],
     "lifelines": {
       "fiftyFifty": [0, 1],
-      "phoneAFriend": "This text is displayed when you use the phone a friend lifeline",
-      "askTheAudience": [22, 8, 62, 8]
+      "phoneAFriend": "Answer A",
+      "askTheAudience": [73, 7, 12, 8]
     }
-  }]
+  },
+  {
+    "question": "What parts does GIS consist of?",
+    "answers": [{
+      "text": "Hardware - Software - Non location bound data",
+      "correct": false
+    },
+    {
+      "text": "Hardware - Software - Location bound data",
+      "correct": false
+    },
+    {
+      "text": "Hardware - Software - Location- and Non location bound data",
+      "correct": true
+    },
+    {
+      "text": "Hardware - Software",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [0, 2],
+      "phoneAFriend": "ohw... This is a really hard question. I think i'll have to guess C",
+      "askTheAudience": [15, 15, 45, 25]
+    }
+  },
+  {
+    "question": "What does the abbreviation LOD officially stand for?",
+    "answers": [{
+      "text": "Long Offset Driver",
+      "correct": false
+    },
+    {
+      "text": "Link Of Density",
+      "correct": false
+    },
+    {
+      "text": "Level Of Development",
+      "correct": true
+    },
+    {
+      "text": "Level Of Discussion",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [3, 2],
+      "phoneAFriend": "Ohw thats easy, the answer is C",
+      "askTheAudience": [15, 13, 47, 25]
+    }
+  },
+  {
+    "question": "Where does the abbreviation BIM stand for? More than 1 answer is correct. Choose one!",
+    "answers": [{
+      "text": "Building Information Model",
+      "correct": false
+    },
+    {
+      "text": "Building Information Measurement",
+      "correct": false
+    },
+    {
+      "text": "Building Information Mechanism",
+      "correct": true
+    },
+    {
+      "text": "Building Inception Master",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [1, 2],
+      "phoneAFriend": "answer C",
+      "askTheAudience": [8, 6, 82, 4]
+    }
+  },
+  {
+    "question": "What among other things do you have to report to a information takeoff",
+    "answers": [{
+      "text": "The communication strategy",
+      "correct": false
+    },
+    {
+      "text": "The execution logistics",
+      "correct": false
+    },
+    {
+      "text": "The clashlevel",
+      "correct": false
+    },
+    {
+      "text": "The parameter fields",
+      "correct": true
+    }],
+    "lifelines": {
+      "fiftyFifty": [1, 3],
+      "phoneAFriend": "I think the answer is D",
+      "askTheAudience": [22, 18, 26, 44]
+    }
+  },
+  {
+    "question": "What does the abbreviation IFC stand for?",
+    "answers": [{
+      "text": "Industry Foundation Classes",
+      "correct": true
+    },
+    {
+      "text": "Industry Fun Classes",
+      "correct": false
+    },
+    {
+      "text": "Industrial Foundation Classes",
+      "correct": false
+    },
+    {
+      "text": "Informal Foundation Classes",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [0, 3],
+      "phoneAFriend": "That's a really hard one, if i had to guess i would say A",
+      "askTheAudience": [90, 3, 5, 2]
+    }
+  },
+  {
+    "question": "What does the abbreviation BCF stand for?",
+    "answers": [{
+      "text": "BIM Collective Foundation",
+      "correct": false
+    },
+    {
+      "text": "Building Collective Foundation",
+      "correct": false
+    },
+    {
+      "text": "Building Collaboration Format",
+      "correct": false
+    },
+    {
+      "text": "BIM Colleboration Format",
+      "correct": true
+    }],
+    "lifelines": {
+      "fiftyFifty": [0, 3],
+      "phoneAFriend": "The answer is D",
+      "askTheAudience": [5, 15, 13, 67]
+    }
+  },
+  {
+    "question": "What are Industry Foundation Classes",
+    "answers": [{
+      "text": "An industrial BIM Model",
+      "correct": true
+    },
+    {
+      "text": "A Solibri viewer",
+      "correct": false
+    },
+    {
+      "text": "A standard way of distributing information",
+      "correct": false
+    },
+    {
+      "text": "A way of Clash detection",
+      "correct": false
+    }],
+    "lifelines": {
+      "fiftyFifty": [0, 2],
+      "phoneAFriend": "The answer is A",
+      "askTheAudience": [72, 6, 12, 10]
+    }
+  }
+  ]
 }

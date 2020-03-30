@@ -169,7 +169,7 @@
     }
   },
   {
-    "question": "Where does the abbreviation BIM stand for? More than 1 answer is correct. Choose one!",
+    "question": "Where does the abbreviation BIM stand for?",
     "answers": [{
       "text": "Building Information Model",
       "correct": false

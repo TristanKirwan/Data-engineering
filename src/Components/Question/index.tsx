@@ -66,6 +66,7 @@ function Question(props: IProps & LifeLineProps){
     // const [usedAskTheAudienceThisRound, setShowAskTheAudience] = useState(false)
     const [showAskTheAudience, setShowAskTheAudience] = useState(false)
     const [usedPhoneAFriendThisRound, setUsedPhoneAFriendThisRound] = useState(false)
+    const [usedFiftyFiftyThisRound, setUsedFiftyFiftyThisRound] = useState(false)
     const [usedAnyLifeLineThisRound, setUsedAnyLifeLineThisRound] = useState(false)
     let multipleChoiceLetters = ["A", "B", "C", "D"]
 
@@ -111,6 +112,7 @@ function Question(props: IProps & LifeLineProps){
         updateState({})
     }
     const activateFiftyFifty = function(){
+        setUsedFiftyFiftyThisRound(true)
         props.useFiftyFifty()
         setUsedAnyLifeLineThisRound(true)
         updateState({})
@@ -168,17 +170,12 @@ function Question(props: IProps & LifeLineProps){
             <div className="question__answers">
 
                 {currentQuestion.answers.map((answer: QuestionAnswer, id: number) => {
-                    let shouldHideOnFiftyFifty = fiftyFifty && currentQuestion.lifelines.fiftyFifty.includes(id)
+                    let shouldHideOnFiftyFifty = fiftyFifty && currentQuestion.lifelines.fiftyFifty.includes(id) && usedFiftyFiftyThisRound
                     return(
                         <div key={id} className="question__answers__answer-container">
                             {id % 2 === 0 ? <span className="question__answers__answer-container__horizontal-line"></span> : null}
                             <div id={`${id}`} className={classnames("question__answers__answer-container__answer", hasAnswered && `${answer.correct}`, isPending && "flashing", shouldHideOnFiftyFifty && "question__answers__answer-container__answer--disabled")} onClick={() => correctAnswers(answer.correct, id)}>
                                 <span className="question__answers__answer-container__answer__prefix">{multipleChoiceLetters[id]}: </span>{answer.text}
-                                {shouldHideOnFiftyFifty && 
-                                <span>
-                                    Deleted by 50/50
-                                </span>
-                                }
                             </div>
                         </div>
                     )
@@ -190,11 +187,14 @@ function Question(props: IProps & LifeLineProps){
     function correctAnswers(answer: boolean, id: number) {
         setHasAnswered(true);
         setShowAskTheAudience(false)
+        setUsedFiftyFiftyThisRound(false)
         setUsedPhoneAFriendThisRound(false)
         if(answer) {
             props.setScore(score + 1)
         }
-
+        else{
+            props.setFinalScreen(true)
+        }
         setTimeout(() => {
             nextQuestion();
         }, 3000);

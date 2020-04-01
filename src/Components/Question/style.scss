@@ -3,6 +3,7 @@ $baseName: "question";
 
 .#{$baseName}{
     position: relative;
+    width: 80%;
     &__horizontal-line{
         position: absolute;
         display: inline-block;

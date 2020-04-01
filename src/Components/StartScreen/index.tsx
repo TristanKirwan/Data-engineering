@@ -35,7 +35,7 @@ function StartScreen(props: IProps){
                                     <b>50/50:</b> Eliminates 2 of the possible answers, the other 2 remain. <br />
                                     <b>Phone a Friend:</b> You phone your friend and ask him/her the question. He/she responds with what they think the answer might be. Be careful though, your friends won't always know the correct answer! <br />
                                     <b>Ask the audience:</b> The audience vote for what they think the answer is, and these votes are visualized in a bar chart. Ofcourse the audience might not be as smart as you!<br />
-                                    <b>Skip Question:</b> This lifeline allows you to skip this question without losing the game.
+                                    <b>Skip Question:</b> This lifeline allows you to skip this question without losing this round.
                                 </p>
                             </div>
                         </div>

@@ -1,21 +1,21 @@
 {
   "questions": [
     {
-    "question": "What does the abbreviation GIS mean?",
+    "question": "What is the key data point for a GIS application?",
     "answers": [{
-      "text": "Graphical Information System",
+      "text": "Time",
       "correct": false
     },
     {
-      "text": "Geographic Information Source",
+      "text": "Building material",
       "correct": false
     },
     {
-      "text": "Geographic Information System",
+      "text": "Location",
       "correct": true
     },
     {
-      "text": "Graphic Information Source",
+      "text": "Height",
       "correct": false
     }],
     "lifelines": {
@@ -25,21 +25,21 @@
     }
   },
   {
-    "question": "Which of the following functions can be done with GIS as well as with a classic map?",
+    "question": "What is the key data point for a BIM model?",
     "answers": [{
-      "text": "Predicting variables",
+      "text": "Location",
       "correct": false
     },
     {
-      "text": "Calculate the distance between locations",
+      "text": "Building information",
       "correct": true
     },
     {
-      "text": "Digitally compare multiple maps",
+      "text": "Building Material",
       "correct": false
     },
     {
-      "text": "Create static and geographic analyses",
+      "text": "Time",
       "correct": false
     }],
     "lifelines": {
@@ -49,21 +49,21 @@
     }
   },
   {
-    "question": "Which sort of information is needed to work with GIS?",
+    "question": "What is personal data / PII (Personally identifiable information)?",
     "answers": [{
-      "text": "The time when an event takes place",
+      "text": "Information or data that is stored in a vault",
       "correct": false
     },
     {
-      "text": "The location where an event takes place",
+      "text": "Any information relating to an identifiable person",
       "correct": true
     },
     {
-      "text": "The year when an event takes place",
+      "text": "Any information of an employee",
       "correct": false
     },
     {
-      "text": "Non of the above",
+      "text": "Historical information published about a monument",
       "correct": false
     }],
     "lifelines": {
@@ -73,21 +73,21 @@
     }
   },
   {
-    "question": "When can GIS be used?",
+    "question": "What are examples of PII (Personally identifiable information?",
     "answers": [{
-      "text": "To find out where new branches of banks and stores are best located.",
+      "text": "Source codes",
       "correct": false
     },
     {
-      "text": "To plan a route between 2 locations",
+      "text": "Name",
       "correct": false
     },
     {
-      "text": "To make connections between the type of soil and vegetation on a certain location",
+      "text": "Email",
       "correct": false
     },
     {
-      "text": "All of the above",
+      "text": "Answer A & B",
       "correct": true
     }],
     "lifelines": {
@@ -97,45 +97,45 @@
     }
   },
   {
-    "question": "What can you not use GIS for?",
+    "question": "Organizations should protect personal information by which of the following methods?",
     "answers": [{
-      "text": "To predict the weather",
-      "correct": true
-    },
-    {
-      "text": "To visualize where it will be raining",
+      "text": "Physical measures, for example, shredding documents and locking desk drawers",
       "correct": false
     },
     {
-      "text": "To check if there is a connection between the weather in a certain location and the amount of traffic accidents in that location",
+      "text": "Organizational measures, for example, security clearances and limiting access on a 'need-to-know' basis",
+      "correct": false
+    },
+    {
+      "text": "Technological measures, for example, the use of passwords and encryption",
       "correct": false
     },
     {
       "text": "All of the above",
-      "correct": false
+      "correct": true
     }],
     "lifelines": {
-      "fiftyFifty": [3, 1],
-      "phoneAFriend": "Answer A sounds the most logical to me.",
+      "fiftyFifty": [2, 1],
+      "phoneAFriend": "Answer D sounds the most logical to me.",
       "askTheAudience": [73, 7, 12, 8]
     }
   },
   {
-    "question": "What parts does GIS consist of?",
+    "question": "What is the maximum data breach penalty, under the GDPR compliance directives?",
     "answers": [{
-      "text": "Hardware - Software - Non location bound data",
+      "text": "5,000,000 euros, job suspension and imprisonment for up to 5 years",
       "correct": false
     },
     {
-      "text": "Hardware - Software - Location bound data",
+      "text": "10,000,000 euros or up to 1% of annual turnover, whichever is greater",
       "correct": false
     },
     {
-      "text": "Hardware - Software - Location- and Non location bound data",
+      "text": "20,000,000 euros or up to 4% of annual turnover, whichever is greater",
       "correct": true
     },
     {
-      "text": "Hardware - Software",
+      "text": "There is no maximum fine",
       "correct": false
     }],
     "lifelines": {
@@ -145,93 +145,93 @@
     }
   },
   {
-    "question": "What does the abbreviation LOD officially stand for?",
+    "question": "GDPR applies to which types of individuals or organizations?",
     "answers": [{
-      "text": "Long Offset Driver",
+      "text": "Any organization that processes personal data",
       "correct": false
     },
     {
-      "text": "Link Of Density",
-      "correct": false
-    },
-    {
-      "text": "Level Of Development",
+      "text": "All data controllers and processors established in the EU and organizations that target EU resident",
       "correct": true
     },
     {
-      "text": "Level Of Discussion",
+      "text": "Data controllers operating in the EU",
+      "correct": false
+    },
+    {
+      "text": "None of the above",
       "correct": false
     }],
     "lifelines": {
-      "fiftyFifty": [3, 1],
-      "phoneAFriend": "Ohw thats easy, the answer is C",
+      "fiftyFifty": [3, 2],
+      "phoneAFriend": "Ohw thats easy, the answer is B",
       "askTheAudience": [15, 13, 47, 25]
     }
   },
   {
-    "question": "Where does the abbreviation BIM stand for?",
+    "question": "What is the GDPR",
     "answers": [{
-      "text": "Building Information Model",
-      "correct": false
-    },
-    {
-      "text": "Building Information Measurement",
-      "correct": false
-    },
-    {
-      "text": "Building Information Mechanism",
+      "text": "The GDPR is a legally enforced EU regulation that governs how organisations and companies use and maintain the integrity of personal data",
       "correct": true
+    },
+    {
+      "text": "The GDPR is a data privacy law that only applies to companies from the USA",
+      "correct": false
+    },
+    {
+      "text": "The GDPR is a new law that applies to the major browsers, and it's up to them to make sure they're compliant",
+      "correct": false
     },
     {
       "text": "Building Inception Master",
       "correct": false
     }],
     "lifelines": {
-      "fiftyFifty": [1, 0],
-      "phoneAFriend": "I think my I've heard this before and I'm pretty sure it's Answer C",
+      "fiftyFifty": [1, 2],
+      "phoneAFriend": "I think my I've heard this before and I'm pretty sure it's Answer A",
       "askTheAudience": [8, 6, 82, 4]
     }
   },
   {
-    "question": "What among other things do you have to report to a information takeoff",
+    "question": "What is considered as legal consent in the GDPR?",
     "answers": [{
-      "text": "The communication strategy",
+      "text": "Clicking OK to the GDPR pop up without actually reading it",
       "correct": false
     },
     {
-      "text": "The execution logistics",
-      "correct": false
-    },
-    {
-      "text": "The clashlevel",
-      "correct": false
-    },
-    {
-      "text": "The parameter fields",
+      "text": "A clear action where the data subject freely and specifically expresses their consent to the processing of personal data",
       "correct": true
+    },
+    {
+      "text": "A pre-ticked box which automatically provides user consent",
+      "correct": false
+    },
+    {
+      "text": "All of the above",
+      "correct": false
     }],
     "lifelines": {
-      "fiftyFifty": [1, 2],
-      "phoneAFriend": "I think the answer is D",
+      "fiftyFifty": [0, 2],
+      "phoneAFriend": "I think the answer is B",
       "askTheAudience": [22, 18, 26, 44]
     }
   },
   {
-    "question": "What does the abbreviation IFC stand for?",
+    "question": "In the context of digital analytics, what condition does the provider need to meet for data collection to be lawful within the GDPR?",
     "answers": [{
-      "text": "Industry Foundation Classes",
+      "text": "They need to obtain their users' consent",
       "correct": true
     },
     {
-      "text": "Industry Fun Classes",
+      "text": "They must inform their users of the processing they do on their personal data",
       "correct": false
     },
     {
-      "text": "Industrial Foundation Classes",
+      "text": "They must inform the supervisory authority in advance of any processing operations",
       "correct": false
     },
     {
-      "text": "Informal Foundation Classes",
+      "text": "All of the above",
       "correct": false
     }],
     "lifelines": {
@@ -241,21 +241,21 @@
     }
   },
   {
-    "question": "What does the abbreviation BCF stand for?",
+    "question": "In digital analytics, how long should data be kept?",
     "answers": [{
-      "text": "BIM Collective Foundation",
+      "text": "6 Months",
       "correct": false
     },
     {
-      "text": "Building Collective Foundation",
+      "text": "13 Months",
       "correct": false
     },
     {
-      "text": "Building Collaboration Format",
+      "text": "25 Months",
       "correct": false
     },
     {
-      "text": "BIM Colleboration Format",
+      "text": "To be defined according to the type of processing",
       "correct": true
     }],
     "lifelines": {
@@ -265,26 +265,26 @@
     }
   },
   {
-    "question": "What are Industry Foundation Classes",
+    "question": "What is a DPO?",
     "answers": [{
-      "text": "An industrial BIM Model",
+      "text": "Data positioning Officer",
+      "correct": false
+    },
+    {
+      "text": "Dublin Philharmonic Orchestra",
+      "correct": false
+    },
+    {
+      "text": "Data Protection Officer",
       "correct": true
     },
     {
-      "text": "A Solibri viewer",
-      "correct": false
-    },
-    {
-      "text": "A standard way of distributing information",
-      "correct": false
-    },
-    {
-      "text": "A way of Clash detection",
+      "text": "Data Publishing Officer",
       "correct": false
     }],
     "lifelines": {
-      "fiftyFifty": [1, 2],
-      "phoneAFriend": "As someone who works in the field, I can say with certainty that the answer is A.",
+      "fiftyFifty": [1, 0],
+      "phoneAFriend": "As someone who works in the field, I can say with certainty that the answer is C.",
       "askTheAudience": [72, 6, 12, 10]
     }
   }
